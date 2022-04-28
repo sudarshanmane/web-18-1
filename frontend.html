@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          #container{
+               width:90%;
+
+            display:grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: repeat(auto,auto);
+            gap:20px 20px;
+            margin: auto;
+            margin-top: 50px;
+
+           }
+           #container>div{
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               align-items: center;
+               box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+               border-radius: 15px;
+               border-top-left-radius: 35px;
+           }
+
+           #container>div>img:first-child{
+               height:250px;
+               width:100%;
+               border-top-left-radius: 35px;
+               border-top-right-radius: 10px;
+           }
+           #container>div>img:last-child{
+               height:50px;
+               width:120px;
+               margin-top:  -25px;
+
+            }
+
+            #container>div>h3{
+
+                margin-bottom: -7px ;
+           }
+    </style>
+</head>
+<body>
+    <h1>FRONTEND</h1>
+    <div id="container"></div>
+
+</body>
+</html>
+<script>
+     var arr  = JSON.parse(localStorage.getItem("investorsData"));
+    //  console.log(arr);
+ 
+
+arr.forEach(function(el){
+
+
+    var box = document.querySelector("#container");
+    
+    var cards = document.createElement("div");
+    
+    var image = document.createElement("img");
+   image.setAttribute("src" , el.img)
+
+   var name = document.createElement("h3");
+    name.innerText=el.name;
+
+    var role = document.createElement("p")
+    role.innerText=el.role;
+
+    var lobo = document.createElement("img")
+    lobo.setAttribute("src",el.lobo)
+
+    cards.append(image,name,role,lobo)
+
+    box.append(cards);
+})
+    
+</script>
